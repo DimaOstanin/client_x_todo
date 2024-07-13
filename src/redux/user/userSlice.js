@@ -25,7 +25,6 @@ const userSlice = createSlice({
 
 export const {
   signIn,
-  
   signOutUser
 } = userSlice.actions;
 

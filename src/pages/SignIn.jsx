@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { Link ,useNavigate} from "react-router-dom"
-
+import { useDispatch } from "react-redux";
+import { signIn } from "../redux/user/userSlice";
 
 export const SignIn = () => {
   const [formData, setFormData] = useState({});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
     const handleChange = (e) => {
       setFormData({
@@ -24,6 +26,7 @@ export const SignIn = () => {
           body: JSON.stringify(formData),
         });
         const data = await res.json();
+        dispatch(signIn(data));
         // console.log(data);
         if (data.success === false) {
           
